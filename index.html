@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Klax</title>
+    <meta name="description" content="">
+    <style>
+    </style>
+  </head>
+  <body>
+
+    <h1>Klax</h1>
+
+    <p>
+        Écouter <strong>Radio Klaxon</strong> OKLM depuis un navigateur Firefox,
+        ou mieux, <a href="https://www.torproject.org/download/download-easy.html.en">Tor Browser</a>.
+    </p>
+
+    <audio id="audio" controls loop autoplay data-playlist="https://opi.github.io/klax/klax.m3u"></audio>
+
+    <p>
+        <button id="audio-next-source">Changer de mirroir</button>
+        <button id="audio-randomize-source">Mirroir au hasard</button>
+    </p>
+
+    <p>
+    <strong>Playlist&nbsp;:</strong> <a href="https://grenoble.indymedia.org/radio_klaxon.m3u">
+    https://grenoble.indymedia.org/radio_klaxon.m3u</a>, à utiliser avec VLC par exemple.
+    </p>
+
+    <p>
+        <em>open source: </em>
+        Code is on <a href="https://github.com/opi/klax">https://github.com/opi/klax</a>
+    </p>
+
+    <script src="m3uStreamPlayer.js"></script>
+    <script>m3uStreamPlayer.init({selector: '#audio', debug: true});</script>
+    <script>
+
+      /**
+       * Buttons
+       */
+      var buttonNextSource = document.querySelector('#audio-next-source');
+      var buttonRandomizeSource = document.querySelector('#audio-randomize-source');
+      buttonNextSource.addEventListener('click', function(){ m3uStreamPlayer.nextSource(document.querySelector('#audio')); })
+      buttonRandomizeSource.addEventListener('click', function(){ m3uStreamPlayer.randomizeSource(document.querySelector('#audio')); })
+
+    </script>
+  </body>
+</html>
